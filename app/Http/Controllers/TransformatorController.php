@@ -40,7 +40,7 @@ class TransformatorController extends Controller
         DB::beginTransaction();
         try {
             $request->validate([
-                'name' => 'required',
+                'name' => 'required|unique:transformators,name',
             ]);
 
             Transformator::create([

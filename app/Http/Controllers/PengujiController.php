@@ -40,7 +40,7 @@ class PengujiController extends Controller
         DB::beginTransaction();
         try {
             $request->validate([
-                'name' => 'required',
+                'name' => 'required|unique:pengujis,name',
             ]);
 
             Penguji::create([
