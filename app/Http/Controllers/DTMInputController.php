@@ -46,7 +46,7 @@ class DTMInputController extends Controller
                 'C2H4' => 'required',
             ]);
 
-            DTM_input::create([
+            $dtm = DTM_input::create([
                 'penguji_id'  => $request->penguji_id,
                 'transformator_id'  => $request->transformator_id,
                 'CH4'  => $request->CH4,
@@ -55,7 +55,7 @@ class DTMInputController extends Controller
             ]);
 
             DB::commit();
-            return response()->json('Data gas terlarut DTM berhasil disimpan!', 200);
+            return response()->json(['message' => 'Data gas terlarut DTM berhasil disimpan!', 'id' => $dtm->id], 200);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json($th->getMessage(), 500);
