@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DPM_result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DPMResultController extends Controller
 {
@@ -36,6 +37,24 @@ class DPMResultController extends Controller
     public function store(Request $request)
     {
         //
+        DB::beginTransaction();
+        try {
+            $request->validate([
+                'dpm_input_id' => 'required',
+                'fault' => 'required',
+            ]);
+
+            DPM_result::create([
+                'dpm_input_id' => $request->dpm_input_id,
+                'Fault' => $request->fault,
+            ]);
+
+            DB::commit();
+            return response()->json(['message' => 'Data analisis berhasil disimpan', 'description_dpm' => config('description_dpm')[$request->fault]], 200);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th->getMessage(), 500);
+        }
     }
 
     /**

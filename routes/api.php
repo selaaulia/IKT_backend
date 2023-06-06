@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DPMController;
 use App\Http\Controllers\DPMInputController;
+use App\Http\Controllers\DPMResultController;
 use App\Http\Controllers\DTMController;
 use App\Http\Controllers\DTMInputController;
 use App\Http\Controllers\DTMResultController;
@@ -27,8 +28,10 @@ Route::apiResource('transformator', TransformatorController::class);
 Route::apiResource('input-dtm', DTMInputController::class);
 Route::apiResource('input-dpm', DPMInputController::class);
 Route::apiResource('result-dtm', DTMResultController::class);
+Route::apiResource('result-dpm', DPMResultController::class);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 
