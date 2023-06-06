@@ -4,6 +4,7 @@ use App\Http\Controllers\DPMController;
 use App\Http\Controllers\DPMInputController;
 use App\Http\Controllers\DTMController;
 use App\Http\Controllers\DTMInputController;
+use App\Http\Controllers\DTMResultController;
 use App\Http\Controllers\PengujiController;
 use App\Http\Controllers\TransformatorController;
 use Illuminate\Http\Request;
@@ -25,6 +26,7 @@ Route::apiResource('penguji', PengujiController::class);
 Route::apiResource('transformator', TransformatorController::class);
 Route::apiResource('input-dtm', DTMInputController::class);
 Route::apiResource('input-dpm', DPMInputController::class);
+Route::apiResource('result-dtm', DTMResultController::class);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

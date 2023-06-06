@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DTM_result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DTMResultController extends Controller
 {
@@ -35,7 +36,24 @@ class DTMResultController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $request->validate([
+                'dtm_input_id'  => 'required',
+                'fault' => 'required',
+            ]);
+
+            DTM_result::create([
+                'dtm_input_id'  => $request->dtm_input_id,
+                'Fault'         => $request->fault,
+            ]);
+
+            DB::commit();
+            return response()->json(['message' => 'Data analisis berhasil disimpan', 'description' => config('description')[$request->fault]], 200);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            return response()->json($th->getMessage(), 500);
+        }
     }
 
     /**
