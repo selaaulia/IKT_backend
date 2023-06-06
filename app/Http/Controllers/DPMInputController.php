@@ -48,7 +48,7 @@ class DPMInputController extends Controller
                 'C2H6' => 'required',
             ]);
 
-            DPM_input::create([
+            $dpm = DPM_input::create([
                 'penguji_id'  => $request->penguji_id,
                 'transformator_id'  => $request->transformator_id,
                 'H2'  => $request->H2,
@@ -59,7 +59,7 @@ class DPMInputController extends Controller
             ]);
 
             DB::commit();
-            return response()->json('Data gas terlarut DPM berhasil disimpan!', 200);
+            return response()->json(['message' => 'Data gas terlarut DPM berhasil disimpan!', 'id' => $dpm->id], 200);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json($th->getMessage(), 500);
