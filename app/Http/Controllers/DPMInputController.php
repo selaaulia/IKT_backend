@@ -51,11 +51,11 @@ class DPMInputController extends Controller
             DPM_input::create([
                 'penguji_id'  => $request->penguji_id,
                 'transformator_id'  => $request->transformator_id,
-                'H2'  => $request->H2,
-                'CH4'  => $request->CH4,
-                'C2H2'  => $request->C2H2,
-                'C2H4'  => $request->C2H4,
-                'C2H6'  => $request->C2H6,
+                'H2'  => (double)$request->H2,
+                'CH4'  => (double)$request->CH4,
+                'C2H2'  => (double)$request->C2H2,
+                'C2H4'  => (double)$request->C2H4,
+                'C2H6'  => (double)$request->C2H6,
             ]);
 
             DB::commit();
