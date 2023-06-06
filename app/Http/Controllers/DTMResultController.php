@@ -49,7 +49,7 @@ class DTMResultController extends Controller
             ]);
 
             DB::commit();
-            return response()->json(['message' => 'Data analisis berhasil disimpan', 'description' => config('description')[$request->fault]], 200);
+            return response()->json(['message' => 'Data analisis berhasil disimpan', 'description' => config('description')['DTM'][$request->fault]], 200);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json($th->getMessage(), 500);
