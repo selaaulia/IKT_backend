@@ -22,6 +22,6 @@ class DTM_result extends Model
     }
 
     public function getDescriptionAttribute() {
-        return '-'; // Ganti deskripsinya terserah pengennya gimana
+        return config('description.DTM')[$this->Fault];
     }
 }
