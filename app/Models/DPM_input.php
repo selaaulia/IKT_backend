@@ -19,11 +19,11 @@ class DPM_input extends Model
     ];
 
     public function transformator(){
-        return $this->belongTo(Transformator::class, 'transformator_id', 'id');
+        return $this->belongsTo(Transformator::class, 'transformator_id', 'id');
     }
 
     public function penguji() {
-        return $this->belongTo(Penguji::class, 'penguji_id', 'id');
+        return $this->belongsTo(Penguji::class, 'penguji_id', 'id');
     }
 
     public function result(){

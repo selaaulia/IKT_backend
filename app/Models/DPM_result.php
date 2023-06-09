@@ -16,7 +16,7 @@ class DPM_result extends Model
     ];
 
     public function input(){
-        return $this->belongTo(DPM_input::class, 'dtm_input_id', 'id');
+        return $this->belongsTo(DPM_input::class, 'dtm_input_id', 'id');
     }
     public function getMethodAttribute(){
         return 'DPM';
