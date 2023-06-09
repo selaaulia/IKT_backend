@@ -11,4 +11,8 @@ class Transformator extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function inputDTM() {
+        return $this->hasMany(DTM_input::class, 'transformator_id', 'id')->whereHas('result')->with('result');
+    }
 }
