@@ -14,4 +14,14 @@ class DPM_result extends Model
         'Cy',
         'Fault'
     ];
+
+    public function input(){
+        return $this->belongTo(DPM_input::class, 'dtm_input_id', 'id');
+    }
+    public function getMethodAttribute(){
+        return 'DPM';
+    }
+    public function getDescriptionAttribute() {
+        return config('description.DPM')[$this->Fault];
+    }
 }

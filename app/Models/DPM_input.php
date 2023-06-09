@@ -17,4 +17,16 @@ class DPM_input extends Model
         'C2H4',
         'C2H6'
     ];
+
+    public function transformator(){
+        return $this->belongTo(Transformator::class, 'transformator_id', 'id');
+    }
+
+    public function penguji() {
+        return $this->belongTo(Penguji::class, 'penguji_id', 'id');
+    }
+
+    public function result(){
+        return $this->hasMany(DPM_result::class, 'dpm_input_id', 'id');
+    }
 }

@@ -15,4 +15,8 @@ class Transformator extends Model
     public function inputDTM() {
         return $this->hasMany(DTM_input::class, 'transformator_id', 'id')->whereHas('result')->with('result');
     }
+
+    public function inputDPM() {
+        return $this->hasMany(DPM_input::class, 'transformator_id', 'id')->whereHas('result')->with('result');
+    }
 }

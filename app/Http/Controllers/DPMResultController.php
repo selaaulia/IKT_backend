@@ -13,9 +13,11 @@ class DPMResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $dpm = DPM_result::whereHas('input', function($query) use ($request) {
+            $query->whereRelation('transformator', 'id', $request->transformator_id);
+        })->get();
     }
 
     /**

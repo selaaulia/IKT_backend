@@ -14,8 +14,11 @@ class ResultController extends Controller
             $query->whereRelation('transformator', 'id', $request->transformator_id);
         })->get();
         // $dpm = querynya disini
+        $dpm = DPM_result::whereHas('input', function ($query) use ($request) {
+            $query->whereRelation('transformator', 'id', $request->transformator_id);
+        })->get();
 
-        $data = $dtm; // nanti diubah jadi gini $data = $dtm->merge($dpm);
+        $data = $dtm->merge($dpm); // nanti diubah jadi gini $data = $dtm->merge($dpm);
         return response()->json(ResultResource::collection($data), 200);
     }
 }
