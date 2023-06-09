@@ -54,7 +54,7 @@ class DPMResultController extends Controller
             ]);
 
             DB::commit();
-            return response()->json(['message' => 'Data analisis berhasil disimpan', 'description_dpm' => config('description_dpm')[$request->fault]], 200);
+            return response()->json(['message' => 'Data analisis berhasil disimpan', 'description_dpm' => config('description.DPM')[$request->fault]], 200);
         } catch (\Throwable $th) {
             DB::rollBack();
             return response()->json($th->getMessage(), 500);
