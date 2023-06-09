@@ -19,7 +19,7 @@ class ResultResource extends JsonResource
             'transformator'     => $this->input->transformator->name,
             'penguji'           => $this->input->penguji->name,
             'method'            => $this->method,
-            'H2'                => $this->input->h2 ?? '',
+            'H2'                => $this->input->H2 ?? '',
             'CH4'               => $this->input->CH4 ?? '',
             'C2H2'              => $this->input->C2H2 ?? '',
             'C2H4'              => $this->input->C2H4 ?? '',
