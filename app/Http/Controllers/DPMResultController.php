@@ -41,11 +41,15 @@ class DPMResultController extends Controller
         try {
             $request->validate([
                 'dpm_input_id' => 'required',
+                'cx' => 'required',
+                'cy' => 'required',
                 'fault' => 'required',
             ]);
 
             DPM_result::create([
                 'dpm_input_id' => $request->dpm_input_id,
+                'Cx' => $request->cx,
+                'Cy' => $request->cy,
                 'Fault' => $request->fault,
             ]);
 
