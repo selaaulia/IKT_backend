@@ -22,6 +22,6 @@ class DPM_result extends Model
         return 'DPM';
     }
     public function getDescriptionAttribute() {
-        return config('description.DPM')[$this->Fault];
+        return config('description.DPM')[$this->Fault]. '. Titk Cx= '. $this->Cx. ', dan Cy= ' .$this->Cy;
     }
 }
